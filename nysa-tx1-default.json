@@ -1,0 +1,13 @@
+{
+    "BASE_DIR":"~/projects/ibuilder_project",
+    "board":"tx1_pcie",
+    "IMAGE_ID":0,
+    "PROJECT_NAME":"example_project",
+    "SLAVES":{
+        "wb_tx1_pcie":{
+            "filename":"wb_tx1_pcie.v"
+        }
+    },
+    "constraint_files":[
+    ]
+}
