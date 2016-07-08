@@ -4,54 +4,37 @@
     "IMAGE_ID":0,
     "PROJECT_NAME":"example_project",
     "SLAVES":{
-      "pcie":{
-        "filename":"wb_tx1_pcie.v",
-        "constraint_files":[
-          "kintex7_pcie.ucf"
-        ],
+      "lax":{
+        "filename":"wb_logic_analyzer.v",
+        "PARAMETERS":{
+           "CAPTURE_DEPTH":"14"
+        },
         "bind":{
-          "o_pcie_exp_tx_p":{
-            "loc":"o_pcie_phy_tx_p",
-            "direction":"output"
-          },
-          "o_pcie_exp_tx_n":{
-            "loc":"o_pcie_phy_tx_n",
-            "direction":"output"
-          },
-          "i_pcie_exp_rx_p":{
-            "loc":"i_pcie_phy_rx_p",
+          "i_phy_rx":{
+            "loc":"exp_4",
             "direction":"input"
           },
-          "i_pcie_exp_rx_n":{
-            "loc":"i_pcie_phy_rx_n",
-            "direction":"input"
-          },
-          "i_pcie_clk_p":{
-            "loc":"i_pcie_phy_clk_p",
-            "direction":"input"
-          },
-          "i_pcie_clk_n":{
-            "loc":"i_pcie_phy_clk_n",
-            "direction":"input"
-          },
-          "i_pcie_reset_n":{
-            "loc":"i_pcie_reset_n",
-            "direction":"input"
-          },
-          "o_pcie_wake_n":{
-            "loc":"o_pcie_wake_n",
-            "direction":"output"
-          },
-          "o_pcie_clkreq":{
-            "loc":"o_pcie_clkreq",
+          "o_phy_tx":{
+            "loc":"exp_5",
             "direction":"output"
           }
         }
       }
     },
     "internal_bind":{
+      "lax_i_la_clk":{
+        "signal":"pcie_o_lax_clk"
+      },
+      "lax_i_la_data":{
+        "signal":"pcie_o_debug"
+      },
+      "lax_i_la_ext_trig":{
+        "signal":"1'b0"
+      }
     },
     "dependencies":[
+      "logic_analyzer.v",
+      "dpb.v",
       "pcie_7x_v1_11_0.v",
       "pcie_7x_v1_11_0_axi_basic_rx.v",
       "pcie_7x_v1_11_0_axi_basic_rx_null_gen.v",
@@ -86,14 +69,6 @@
       "pcie_7x_v1_11_0_qpll_reset.v",
       "pcie_7x_v1_11_0_qpll_wrapper.v",
       "pcie_7x_v1_11_0_rxeq_scan.v",
-      "EP_MEM.v",
-      "pcie_app_7x.v",
-      "PIO.v",
-      "PIO_EP.v",
-      "PIO_EP_MEM_ACCESS.v",
-      "PIO_RX_ENGINE.v",
-      "PIO_TO_CTRL.v",
-      "PIO_TX_ENGINE.v",
       "IBUFDS_GTE2.v"
     ],
     "constraint_files":[
